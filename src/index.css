@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 20%;
+
+    --card: 0 0% 96%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 38 60% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 25%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 93%;
+    --accent-foreground: 0 0% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 38 30% 82%;
+    --input: 38 30% 82%;
+    --ring: 38 60% 50%;
+
+    --radius: 0.5rem;
+
+    --gold: 38 60% 50%;
+    --gold-light: 40 50% 75%;
+    --gold-dark: 36 70% 35%;
+    --cream: 40 33% 96%;
+    --cream-dark: 40 25% 90%;
+    --blush: 340 30% 90%;
+    --sage: 140 20% 70%;
+
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 10% 10%;
+    --foreground: 40 33% 92%;
+    --primary: 38 60% 50%;
+    --primary-foreground: 30 10% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .wedding-section {
+    @apply min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center;
+  }
+
+  .gold-text {
+    color: hsl(var(--gold));
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ornament-divider {
+    @apply w-48 h-auto opacity-70 mx-auto my-8;
+  }
+
+  .countdown-item {
+    @apply flex flex-col items-center;
+  }
+
+  .countdown-number {
+    font-family: var(--font-display);
+    @apply text-5xl md:text-6xl font-light;
+    color: hsl(var(--gold));
+  }
+
+  .countdown-label {
+    @apply text-xs uppercase tracking-[0.3em] mt-2;
+    color: hsl(var(--muted-foreground));
+    font-family: var(--font-body);
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-family: var(--font-display);
+  }
+
+  .text-body {
+    font-family: var(--font-body);
+  }
+}
