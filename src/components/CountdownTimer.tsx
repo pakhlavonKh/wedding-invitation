@@ -38,9 +38,8 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <section className="wedding-section bg-card">
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
@@ -48,11 +47,11 @@ const CountdownTimer = () => {
       >
         <GoldDivider />
         
-        <h2 className="text-display text-3xl md:text-4xl font-light gold-text mb-4">
+        <h2 className="text-display text-3xl md:text-4xl font-light gold-text mb-4 mx-auto text-center">
           Тойға дейін
         </h2>
         
-        <div className="flex justify-center gap-6 md:gap-10 mt-10">
+        <div className="flex justify-center gap-6 md:gap-10">
           {items.map((item, i) => (
             <motion.div
               key={item.label}
@@ -72,7 +71,6 @@ const CountdownTimer = () => {
         
         <GoldDivider />
       </motion.div>
-    </section>
   );
 };
 

@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { MapPin, Clock, CalendarDays } from "lucide-react";
 import GoldDivider from "@/components/GoldDivider";
+import WeddingCalendar from "./WeddingCalendar";
+
 
 const LocationSection = () => {
   return (
     <section className="wedding-section bg-card">
+      <WeddingCalendar />
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

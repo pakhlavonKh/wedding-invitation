@@ -88,21 +88,6 @@ const HeroSection = () => {
         >
           Үйлену тойы
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 4 }}
-          className="flex justify-center mt-12 z-100 mb-12"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-5 h-9 border border-primary/30 rounded-full flex items-start justify-center pt-2"
-          >
-            <div className="w-0.5 h-2 bg-primary/40 rounded-full" />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );
