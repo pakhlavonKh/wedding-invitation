@@ -93,7 +93,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 4 }}
-          className="flex justify-center mt-12"
+          className="flex justify-center mt-12 z-100 mb-12"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
