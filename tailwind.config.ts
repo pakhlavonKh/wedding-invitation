@@ -70,8 +70,9 @@ export default {
         sage: "hsl(var(--sage))",
       },
       fontFamily: {
-        display: ["Cormorant Garamond", "serif"],
-        body: ["Montserrat", "sans-serif"],
+        display: ["Playfair Display", "serif"],
+        script: ["Great Vibes", "cursive"],
+        body: ["Lora", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

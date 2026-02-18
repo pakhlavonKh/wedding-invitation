@@ -1,7 +1,30 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import GoldDivider from "@/components/GoldDivider";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 const RSVPSection = () => {
+  const [name, setName] = useState("");
+  const [attendance, setAttendance] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name && attendance) {
+      // Handle form submission here
+      console.log("RSVP submitted:", { name, attendance });
+      setSubmitted(true);
+      setTimeout(() => {
+        setName("");
+        setAttendance("");
+        setSubmitted(false);
+      }, 2000);
+    }
+  };
+
   return (
     <section className="wedding-section bg-background">
       <motion.div
@@ -17,15 +40,62 @@ const RSVPSection = () => {
           Сіздерді күтеміз!
         </h2>
 
-        <p className="text-body text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto mb-10">
+        <p className="text-body text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto mb-8">
           Тойға қатысуыңызды алдын ала растауыңызды сұраймыз
         </p>
+
+        {/* RSVP Form */}
+        <motion.form
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          onSubmit={handleSubmit}
+          className="space-y-6 mb-10"
+        >
+          {/* Name Input */}
+          <div>
+            <Input
+              type="text"
+              placeholder="Есіміңіз"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border-gold/30 focus:border-gold/60 bg-background/50"
+              required
+            />
+          </div>
+
+          {/* Attendance Radio Group */}
+          <RadioGroup value={attendance} onValueChange={setAttendance}>
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem value="yes" id="yes" />
+              <Label htmlFor="yes" className="font-light cursor-pointer">
+                Иә, келемін
+              </Label>
+            </div>
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem value="no" id="no" />
+              <Label htmlFor="no" className="font-light cursor-pointer">
+                Өкінішке орай, келе алмаймын
+              </Label>
+            </div>
+          </RadioGroup>
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            disabled={!name || !attendance || submitted}
+            className="w-full bg-gold/80 hover:bg-gold text-background font-semibold py-6 rounded-full transition-all duration-300"
+          >
+            {submitted ? "✓ Жауап болдырылды" : "Жауапты жіберу"}
+          </Button>
+        </motion.form>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="text-display text-5xl md:text-7xl font-light gold-gradient-text py-10"
         >
           Бердібек & Сабина

@@ -43,11 +43,11 @@ const LocationSection = () => {
             className="flex flex-col items-center gap-3"
           >
             <Clock className="w-6 h-6 gold-text" />
-            <p className="text-display text-xl font-light text-foreground">
-              18:00
+            <p className="text-xl font-light text-foreground !inline">
+              15:00 <span className="text-sm text-muted-foreground uppercase tracking-[0.2em] !inline">Беташар</span>
             </p>
-            <p className="text-body text-sm text-muted-foreground uppercase tracking-[0.2em]">
-              Басталу уақыты
+            <p className="text-display text-xl font-light text-foreground !inline">
+              17:00 <span className="text-sm text-muted-foreground uppercase tracking-[0.2em] !inline">Той</span>
             </p>
           </motion.div>
 
@@ -66,7 +66,7 @@ const LocationSection = () => {
               Теміртау қаласы
             </p>
             <p className="text-body text-sm text-muted-foreground">
-              Проспект Металлургов, 65/5
+              Проспект Металлургов, 65/1
             </p>
           </motion.div>
 

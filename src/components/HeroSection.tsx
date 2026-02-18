@@ -46,24 +46,6 @@ const HeroSection = () => {
           <GoldDivider />
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="text-body text-xs uppercase tracking-[0.5em] text-muted-foreground mb-10"
-        >
-          Құрметті қонақтар!
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-          className="text-body text-xs md:text-sm text-muted-foreground mb-10 max-w-sm mx-auto leading-relaxed tracking-wide"
-        >
-          Балаларымыздың үйлену тойына арналған салтанатты ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
-        </motion.p>
-
         <div className="my-6">
           <h1 className="text-display text-5xl md:text-7xl lg:text-8xl font-light gold-gradient-text leading-none text-left md:text-center pl-6 md:pl-0">
             <AnimatedText text="Бердібек" />
