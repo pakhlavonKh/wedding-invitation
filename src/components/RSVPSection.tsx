@@ -8,41 +8,44 @@ import { Label } from "@/components/ui/label";
 
 const RSVPSection = () => {
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [attendance, setAttendance] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
- const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxt5kymMjShMldCLiHTtNBZj57rxcwh5D7-Dp7toaMuZFE9qD5MkPkdnJSJpwzot6o7/exec";
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbyddbA4M9eqice9bUwFfofnvyflaDDkdMD6er-yvovSS5Mzg3_DbRLRPeu3obrNH1ZD/exec";
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!name || !attendance) return;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !phone || !attendance) return;
 
-  try {
-    setSubmitted(true);
+    try {
+      setSubmitted(true);
 
-    await fetch(SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors", // 👈 bypass CORS
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        name,
-        attendance,
-      }),
-    });
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // bypass CORS
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          name,
+          phone,
+          attendance,
+        }),
+      });
 
-    // You cannot read the response in no-cors mode — assume success
-    setName("");
-    setAttendance("");
-    setTimeout(() => setSubmitted(false), 1500);
-
-  } catch (err) {
-    console.error("RSVP error:", err);
-    setSubmitted(false);
-    alert("Ошибка при отправке. Попробуйте позже.");
-  }
-};
+      // fire-and-forget success
+      setName("");
+      setPhone("");
+      setAttendance("");
+      setTimeout(() => setSubmitted(false), 1500);
+    } catch (err) {
+      console.error("RSVP error:", err);
+      setSubmitted(false);
+      alert("Ошибка при отправке. Попробуйте позже.");
+    }
+  };
 
   return (
     <section className="wedding-section bg-background">
@@ -72,19 +75,27 @@ const handleSubmit = async (e: React.FormEvent) => {
           onSubmit={handleSubmit}
           className="space-y-6 mb-10"
         >
-          {/* Name Input */}
-          <div>
-            <Input
-              type="text"
-              placeholder="Есіміңіз"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="border-gold/30 focus:border-gold/60 bg-background/50"
-              required
-            />
-          </div>
+          {/* Name */}
+          <Input
+            type="text"
+            placeholder="Есіміңіз"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="border-gold/30 focus:border-gold/60 bg-background/50"
+            required
+          />
 
-          {/* Attendance Radio Group */}
+          {/* Phone */}
+          <Input
+            type="tel"
+            placeholder="Телефон нөміріңіз"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="border-gold/30 focus:border-gold/60 bg-background/50"
+            required
+          />
+
+          {/* Attendance */}
           <RadioGroup value={attendance} onValueChange={setAttendance}>
             <div className="flex items-center space-x-3">
               <RadioGroupItem value="yes" id="yes" />
@@ -100,10 +111,10 @@ const handleSubmit = async (e: React.FormEvent) => {
             </div>
           </RadioGroup>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <Button
             type="submit"
-            disabled={!name || !attendance || submitted}
+            disabled={!name || !phone || !attendance || submitted}
             className="w-full bg-gold/80 hover:bg-gold text-background font-semibold py-6 rounded-full transition-all duration-300"
           >
             {submitted ? "✓ Жауап болдырылды" : "Жауапты жіберу"}
