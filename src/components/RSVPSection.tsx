@@ -11,17 +11,40 @@ const RSVPSection = () => {
   const [attendance, setAttendance] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxZyNJ5KZ1WqKYxSAYbosrecXeLkfllJQA1SwurhEItdYnLrWUD9QQ79-tw8mkTH5mL/exec";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && attendance) {
-      // Handle form submission here
-      console.log("RSVP submitted:", { name, attendance });
+    if (!name || !attendance) return;
+
+    try {
       setSubmitted(true);
-      setTimeout(() => {
+
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          attendance,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
         setName("");
         setAttendance("");
-        setSubmitted(false);
-      }, 2000);
+        setTimeout(() => setSubmitted(false), 1500);
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (err) {
+      console.error("RSVP error:", err);
+      setSubmitted(false);
+      alert("Ошибка при отправке. Попробуйте позже.");
     }
   };
 
