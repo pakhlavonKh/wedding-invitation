@@ -11,42 +11,38 @@ const RSVPSection = () => {
   const [attendance, setAttendance] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbxZyNJ5KZ1WqKYxSAYbosrecXeLkfllJQA1SwurhEItdYnLrWUD9QQ79-tw8mkTH5mL/exec";
+ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxt5kymMjShMldCLiHTtNBZj57rxcwh5D7-Dp7toaMuZFE9qD5MkPkdnJSJpwzot6o7/exec";
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !attendance) return;
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!name || !attendance) return;
 
-    try {
-      setSubmitted(true);
+  try {
+    setSubmitted(true);
 
-      const res = await fetch(SCRIPT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          attendance,
-        }),
-      });
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors", // 👈 bypass CORS
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        name,
+        attendance,
+      }),
+    });
 
-      const data = await res.json();
+    // You cannot read the response in no-cors mode — assume success
+    setName("");
+    setAttendance("");
+    setTimeout(() => setSubmitted(false), 1500);
 
-      if (data.success) {
-        setName("");
-        setAttendance("");
-        setTimeout(() => setSubmitted(false), 1500);
-      } else {
-        throw new Error("Submission failed");
-      }
-    } catch (err) {
-      console.error("RSVP error:", err);
-      setSubmitted(false);
-      alert("Ошибка при отправке. Попробуйте позже.");
-    }
-  };
+  } catch (err) {
+    console.error("RSVP error:", err);
+    setSubmitted(false);
+    alert("Ошибка при отправке. Попробуйте позже.");
+  }
+};
 
   return (
     <section className="wedding-section bg-background">
