@@ -54,7 +54,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 2.2 }}
-            className="text-display text-lg md:text-3xl italic gold-text block my-0 md:my-4"
+            className="text-display text-[2.5rem] md:text-4xl italic gold-text block my-0 md:my-4"
           >
             &
           </motion.span>
@@ -79,7 +79,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 4.2 }}
-          className="text-body text-xs uppercase tracking-[0.4em] text-muted-foreground mt-10"
+          className="text-body text-[1.5rem] uppercase tracking-[0.4em] text-muted-foreground mt-10"
         >
           Үйлену тойы
         </motion.p>
