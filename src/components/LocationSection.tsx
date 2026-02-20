@@ -71,7 +71,7 @@ const LocationSection = () => {
           </motion.div>
 
           <motion.a
-            href="https://2gis.kz/temirtau/search/%D0%9F%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B5%D1%82%D0%B0%D0%BB%D0%BB%D1%83%D1%80%D0%B3%D0%BE%D0%B2%2065%2F5"
+            href="https://2gis.kz/karaganda/search/%D0%9F%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9C%D0%B5%D1%82%D0%B0%D0%BB%D0%BB%D1%83%D1%80%D0%B3%D0%BE%D0%B2%2065%2F1/firm/70000001093071350/72.964107%2C50.038101?m=72.964122%2C50.038853%2F17.39"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0 }}
