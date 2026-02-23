@@ -42,9 +42,9 @@ const WeddingCalendar = () => {
       <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-gold/20">
         <div className="mb-6 text-center">
           <h3 className="text-gold text-xl font-semibold">
-            {monthName} {year}
+            Маусым {year}
           </h3>
-          <p className="text-sm text-muted-foreground mt-1">Біздің ерек күні</p>
+          <p className="text-sm text-muted-foreground mt-1">Той күні</p>
         </div>
 
         <div className="w-64">
